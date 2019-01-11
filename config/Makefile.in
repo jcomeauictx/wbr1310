@@ -1,0 +1,4 @@
+
+-include config/progs.gpl/Makefile.in
+-include config/progs.priv/Makefile.in
+-include config/html/Makefile.in

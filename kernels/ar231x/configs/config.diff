@@ -1,0 +1,91 @@
+--- defconfig-ar531x.ap51	2005-05-18 06:12:08.000000000 +0800
++++ defconfig-ar531x.ap51-ram	2005-05-18 06:12:08.000000000 +0800
+@@ -186,7 +186,6 @@
+ CONFIG_MTD_PARTITIONS=y
+ # CONFIG_MTD_CONCAT is not set
+ CONFIG_MTD_REDBOOT_PARTS=y
+-CONFIG_MTD_END_RESERVED=0x10000
+ # CONFIG_MTD_CMDLINE_PARTS is not set
+ 
+ #
+@@ -280,11 +279,18 @@
+ # CONFIG_BLK_DEV_UMEM is not set
+ # CONFIG_BLK_DEV_LOOP is not set
+ # CONFIG_BLK_DEV_NBD is not set
+-# CONFIG_BLK_DEV_RAM is not set
+-# CONFIG_BLK_DEV_INITRD is not set
++CONFIG_BLK_DEV_RAM=y
++CONFIG_BLK_DEV_RAM_SIZE=3072
++CONFIG_BLK_DEV_INITRD=y
+ # CONFIG_BLK_STATS is not set
+ 
+ #
++# MIPS initrd options
++#
++CONFIG_EMBEDDED_RAMDISK=y
++CONFIG_EMBEDDED_RAMDISK_IMAGE="ramdisk.gz"
++
++#
+ # Multi-device support (RAID and LVM)
+ #
+ # CONFIG_MD is not set
+@@ -304,7 +310,7 @@
+ # CONFIG_NETLINK_DEV is not set
+ # CONFIG_NETFILTER is not set
+ # CONFIG_FILTER is not set
+-# CONFIG_UNIX is not set
++CONFIG_UNIX=y
+ CONFIG_INET=y
+ CONFIG_IP_MULTICAST=y
+ # CONFIG_IP_ADVANCED_ROUTER is not set
+@@ -325,14 +331,8 @@
+ # CONFIG_IP_SCTP is not set
+ # CONFIG_ATM is not set
+ # CONFIG_VLAN_8021Q is not set
+-# CONFIG_NET80211 is not set
+-# CONFIG_NET80211_WEP is not set
+-# CONFIG_NET80211_TKIP is not set
+-# CONFIG_NET80211_CCMP is not set
+-# CONFIG_NET80211_ACL is not set
+-# CONFIG_NET80211_AUTH is not set
+-# CONFIG_NET80211_RADIUS is not set
+-# CONFIG_NET80211_XAUTH is not set
++CONFIG_NET80211=y
++CONFIG_ATHEROS_RADAR=y
+ 
+ #
+ #  
+@@ -457,8 +457,9 @@
+ # CONFIG_AIRONET4500_NONCS is not set
+ # CONFIG_AIRONET4500_PROC is not set
+ # CONFIG_HERMES is not set
+-# CONFIG_ATHEROS is not set
+-# CONFIG_RATE_ATHEROS is not set
++CONFIG_ATHEROS=y
++CONFIG_ATHEROS_HAL=y
++CONFIG_RATE_ATHEROS=y
+ # CONFIG_RATE_ONOE is not set
+ CONFIG_NET_WIRELESS=y
+ 
+@@ -594,10 +595,9 @@
+ # CONFIG_VFAT_FS is not set
+ # CONFIG_EFS_FS is not set
+ # CONFIG_JFFS_FS is not set
+-CONFIG_JFFS2_FS=y
+-CONFIG_JFFS2_FS_DEBUG=0
++# CONFIG_JFFS2_FS is not set
+ # CONFIG_CRAMFS is not set
+-CONFIG_TMPFS=y
++# CONFIG_TMPFS is not set
+ CONFIG_RAMFS=y
+ # CONFIG_ISO9660_FS is not set
+ # CONFIG_JOLIET is not set
+@@ -618,7 +618,7 @@
+ # CONFIG_QNX4FS_FS is not set
+ # CONFIG_QNX4FS_RW is not set
+ # CONFIG_ROMFS_FS is not set
+-# CONFIG_EXT2_FS is not set
++CONFIG_EXT2_FS=y
+ # CONFIG_SYSV_FS is not set
+ # CONFIG_UDF_FS is not set
+ # CONFIG_UDF_RW is not set

@@ -1,0 +1,4 @@
+#!/bin/sh
+rm -f vmlinux.bin
+mips-linux-objcopy -O binary -g vmlinux vmlinux.bin
+cp vmlinux.bin /tftpboot/${USER}/.

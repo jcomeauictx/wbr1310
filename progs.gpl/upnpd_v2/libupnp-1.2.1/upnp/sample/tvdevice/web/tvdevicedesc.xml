@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+<specVersion>
+	<major>1</major>
+	<minor>0</minor>
+</specVersion>
+<device>
+<deviceType>urn:schemas-upnp-org:device:InternetGatewayDevice:1</deviceType>
+<friendlyName>InternetGatewayDevice</friendlyName>
+<manufacturer>IntelCorp</manufacturer>
+<manufacturerURL>www.intel.com</manufacturerURL>
+<modelDescription>Intel IGD</modelDescription>
+<modelName>IGD</modelName>
+<modelNumber>1.0</modelNumber>
+<modelURL>www.intel.com</modelURL>
+<serialNumber>123123123</serialNumber>
+<UDN>uuid:724ff22b-8c7d-41c5-a131-44f534e14110</UDN>
+<UPC>123456789012</UPC>
+<serviceList>
+<service>
+<serviceType>urn:schemas-upnp-org:service:DefConnectionService:1</serviceType>
+<serviceId>urn:upnp-org:serviceId:DefConnectionService:1</serviceId>
+<SCPDURL>http://172.18.211.199:11234/DefConnectionService.xml</SCPDURL>
+<controlURL>/igd/control/DefConnectionServiceControl1</controlURL>
+<eventSubURL>/igd/event/DefConnectionServiceEvent1</eventSubURL>
+</service>
+</serviceList>
+	<deviceList>
+<device>
+<deviceType>urn:schemas-upnp-org:device:WANDevice:1</deviceType>
+<friendlyName>WANDevice</friendlyName>
+<manufacturer>IntelCorp</manufacturer>
+<manufacturerURL>www.intel.com</manufacturerURL>
+<modelDescription>Intel IGD</modelDescription>
+<modelName>IGD</modelName>
+<modelNumber>1.0</modelNumber>
+<modelURL>www.intel.com</modelURL>
+<serialNumber>123123123</serialNumber>
+<UDN>uuid:724ff22b-8c7d-41c5-a131-44f534e14111</UDN>
+<UPC>123456789012</UPC>
+<serviceList>
+<service>
+<serviceType>urn:schemas-upnp-org:service:WANCommonInterfaceConfig:1</serviceType>
+<serviceId>urn:upnp-org:serviceId:WANCommonInterfaceConfig:1</serviceId>
+<SCPDURL>http://172.18.211.199:11234/WANCommonInterfaceConfig.xml</SCPDURL>
+<controlURL>/igd/control/WANCommonInterfaceConfigControl2</controlURL>
+<eventSubURL>/igd/event/WANCommonInterfaceConfigEvent2</eventSubURL>
+</service>
+</serviceList>
+	<deviceList>
+<device>
+<deviceType>urn:schemas-upnp-org:device:WANConnectionDevice:1</deviceType>
+<friendlyName>WANConnectionDevice</friendlyName>
+<manufacturer>IntelCorp</manufacturer>
+<manufacturerURL>www.intel.com</manufacturerURL>
+<modelDescription>Intel IGD</modelDescription>
+<modelName>IGD</modelName>
+<modelNumber>1.0</modelNumber>
+<modelURL>www.intel.com</modelURL>
+<serialNumber>123123123</serialNumber>
+<UDN>uuid:724ff22b-8c7d-41c5-a131-44f534e14112</UDN>
+<UPC>123456789012</UPC>
+<serviceList>
+<service>
+<serviceType>urn:schemas-upnp-org:service:WANIPConnection:1</serviceType>
+<serviceId>urn:upnp-org:serviceId:WANIPConnection:1</serviceId>
+<SCPDURL>http://172.18.211.199:11234/WANIPConnection.xml</SCPDURL>
+<controlURL>/igd/control/WANIPConnectionControl3</controlURL>
+<eventSubURL>/igd/event/WANIPConnectionEvent3</eventSubURL>
+</service>
+</serviceList>
+</device>
+</deviceList>
+</device>
+</deviceList>
+<presentationURL>/index.html</presentationURL>
+</device>
+</root>

@@ -1,0 +1,30 @@
+.EXPORT_ALL_VARIABLES:
+
+############################################################################
+ifdef TPATH_UC
+CC_PATH := $(TPATH_UC)
+else
+CC_PATH :=
+endif
+CROSS_COMPILE = mips-linux-
+ZEBRA_HOSTYPE = mips-linux
+
+CC	= $(CROSS_COMPILE)gcc
+AS	= $(CROSS_COMPILE)as
+AR	= $(CROSS_COMPILE)ar
+LD	= $(CROSS_COMPILE)ld
+RANLIB	= $(CROSS_COMPILE)ranlib
+STRIP	= $(CROSS_COMPILE)strip 
+
+CFLAGS	= -Os -Wall -D__UCLIBC_HAS_MMU__ -D__UCLIBC__ -DLOGNUM=1 -DRGDB_BLOCK_OFFSET=8192
+LDFLAGS =
+
+ifdef TPATH_KC
+KCC_PATH := $(TPATH_KC)
+else
+KCC_PATH :=
+endif
+CPU_BIG_ENDIAN=1
+KCC	= mips-linux-gcc
+KLD	= mips-linux-ld
+KCFLAGS = -D__KERNEL__ -Wall -Wstrict-prototypes -Wno-trigraphs -O2 -fno-strict-aliasing -fno-common -fomit-frame-pointer -G 0 -mno-abicalls -fno-pic -pipe  -finline-limit=100000 -mabi=32 -march=r4600 -Wa,-32 -Wa,-march=r4600 -Wa,-mips3 -Wa,--trap -DMODULE -mlong-calls  -nostdinc -iwithprefix include

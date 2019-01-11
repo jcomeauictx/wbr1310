@@ -1,0 +1,4 @@
+#!/bin/sh
+echo 20 > /proc/ar231x/gpio_cr
+echo 0 > /proc/ar231x/gpio05
+echo 1 > /proc/ar231x/system_reset

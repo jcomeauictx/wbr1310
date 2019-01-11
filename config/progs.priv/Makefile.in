@@ -1,0 +1,60 @@
+####
+
+psubdir-y :=
+psubdir-n :=
+psubdir-  :=
+
+psubdir-$(RGAPPS_PROGS_PRIV_XMLDB)		+= xmldb
+psubdir-$(RGAPPS_PROGS_PRIV_XMLDB_V2)		+= xmldb_v2
+# config.rgbin.in
+psubdir-$(RGAPPS_PROGS_PRIV_RGBIN)		+= rgbin
+# config.runtimed.in
+psubdir-$(RGAPPS_PROGS_PRIV_RUNTIMED)		+= runtimed
+# config.alpha_xgi.in
+psubdir-$(RGAPPS_PROGS_PRIV_ALPHA_XGI)		+= alpha_xgi
+psubdir-$(RGAPPS_PROGS_PRIV_ALPHA_XGI_V2)	+= alpha_xgi_v2
+
+# config.log.in
+psubdir-$(RGAPPS_PROGS_PRIV_LOG_ENGLISH)	+= log.english
+# config.runtime.in
+psubdir-$(RGAPPS_PROGS_PRIV_RUNTIME_DHCPSERVER)	+= runtime/dhcpserver
+psubdir-$(RGAPPS_PROGS_PRIV_RUNTIME_DIAGNOSTIC)	+= runtime/diagnostic
+psubdir-$(RGAPPS_PROGS_PRIV_RUNTIME_STATS)	+= runtime/stats
+psubdir-$(RGAPPS_PROGS_PRIV_RUNTIME_SYS)	+= runtime/sys
+psubdir-$(RGAPPS_PROGS_PRIV_RUNTIME_SYSLOG)	+= runtime/syslog
+psubdir-$(RGAPPS_PROGS_PRIV_RUNTIME_TIME)	+= runtime/time
+psubdir-$(RGAPPS_PROGS_PRIV_RUNTIME_WAN)	+= runtime/wan
+
+psubdir-$(RGAPPS_PROGS_PRIV_BLOCKING)		+= blocking
+psubdir-$(RGAPPS_PROGS_PRIV_BLOCKING2)		+= blocking2
+psubdir-$(RGAPPS_PROGS_PRIV_NETSTAR)		+= netstar
+psubdir-$(RGAPPS_PROGS_PRIV_RESOLVED)		+= resolved
+psubdir-$(RGAPPS_PROGS_PRIV_PROXYD)		+= proxyd
+psubdir-$(RGAPPS_PROGS_PRIV_PASSTHROUGHMNGR)	+= passthroughmngr
+psubdir-$(RGAPPS_PROGS_PRIV_PASSTHROUGHMNGR2)	+= passthroughmngr2
+psubdir-$(RGAPPS_PROGS_PRIV_RG_SCRIPT)		+= rg.script
+psubdir-$(RGAPPS_PROGS_PRIV_RG2_SCRIPT)		+= rg2.script
+psubdir-$(RGAPPS_PROGS_PRIV_DHCPXMLPATCH)	+= dhcpxmlpatch
+psubdir-$(RGAPPS_PROGS_PRIV_IFRESETCNT)		+= ifresetcnt
+psubdir-$(RGAPPS_PROGS_PRIV_IFSTATSXMLPATCH)	+= ifstatsxmlpatch
+psubdir-$(RGAPPS_PROGS_PRIV_IPSEC_PT)		+= ipsec_pt
+psubdir-$(RGAPPS_PROGS_PRIV_IPSEC_PT_26)	+= ipsec_pt.26
+psubdir-$(RGAPPS_PROGS_PRIV_MTDTEST)		+= mtdtest
+psubdir-$(RGAPPS_PROGS_PRIV_PORTT)		+= portt
+psubdir-$(RGAPPS_PROGS_PRIV_PTRIGGER)		+= ptrigger
+psubdir-$(RGAPPS_PROGS_PRIV_ROUTE)		+= route
+psubdir-$(RGAPPS_PROGS_PRIV_MADWIFI)		+= madwifi
+psubdir-$(RGAPPS_PROGS_PRIV_MADWIFI_5012)	+= madwifi.LSDK-WLAN5.0.1.2
+psubdir-$(RGAPPS_PROGS_PRIV_MADWIFI_50120)	+= madwifi.LSDK-WLAN5.0.1.20
+psubdir-$(RGAPPS_PROGS_PRIV_MADWIFI_50246)	+= madwifi.LSDK-WLAN5.0.2.46
+psubdir-$(RGAPPS_PROGS_PRIV_MADWIFI_EWC)	+= madwifi.ewc
+psubdir-$(RGAPPS_PROGS_PRIV_DLINK)		+= dlink
+psubdir-$(RGAPPS_PROGS_PRIV_TURBONAT)		+= turbonat
+psubdir-$(RGAPPS_PROGS_PRIV_COMMON_SCRIPTS)	+= common.scripts
+psubdir-$(RGAPPS_PROGS_PRIV_DYNDNS)		+= dyndns
+psubdir-$(RGAPPS_PROGS_PRIV_BDTOOL)		+= bdtool
+psubdir-$(RGAPPS_PROGS_PRIV_WLXMLPATCH_MADWIFI)	+= wlxmlpatch.madwifi
+psubdir-$(RGAPPS_PROGS_PRIV_LLD2D)		+= lld2d
+
+
+PROGS_PRIV_SUBDIRS=$(psubdir-y)

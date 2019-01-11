@@ -1,0 +1,6 @@
+#!/bin/sh
+
+LOGDEVICE=$6
+REALDEVICE=$1
+
+/etc/scripts/misc/wandown.sh &

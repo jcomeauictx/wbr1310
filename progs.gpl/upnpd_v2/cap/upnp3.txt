@@ -1,0 +1,917 @@
+GET /upnp/igdrootdesc.xml HTTP/1.1
+Accept: text/xml, application/xml
+User-Agent: Mozilla/4.0 (compatible; UPnP/1.0; Windows NT/5.1)
+Host: 192.168.1.1
+Connection: Keep-Alive
+Cache-Control: no-cache
+Pragma: no-cache
+
+
+HTTP/1.0 200 OK
+Server: Embedded HTTPD v1.00, 1999(c) All rights reserved.
+Content-length: 3783
+Accept-ranges: bytes
+Content-type: text/xml
+Keep-Alive: timeout=1, max=50
+Connection: Keep-Alive
+
+<?xml version="1.0"?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+<specVersion>
+<major>1</major>
+<minor>0</minor>
+</specVersion>
+<URLBase>http://192.168.1.1:5432</URLBase>
+<device>
+<deviceType>urn:schemas-upnp-org:device:InternetGatewayDevice:1</deviceType>
+<friendlyName>CG-WLBARAG2</friendlyName>
+<manufacturer>corega Inc.</manufacturer>
+<manufacturerURL>http://www.corega.com</manufacturerURL>
+<modelDescription>BROADBAND ROUTER</modelDescription>
+<modelName>CG-WLBARAG2</modelName>
+<modelNumber>1</modelNumber>
+<modelURL>http://www.corega.com</modelURL>
+<serialNumber>0000001</serialNumber>
+<UDN>uuid:13814000-1dd2-11b2-82e9-000a796dc45a</UDN>
+<UPC>123456789</UPC>
+<iconList>
+<icon>
+<mimetype>image/gif</mimetype>
+<width>16</width>
+<height>16</height>
+<depth>8</depth> 
+<url>http://192.168.
+1.1/upnp/igd.gif</url>
+</icon>
+</iconList>
+<serviceList>
+<service>
+<serviceType>urn:schemas-upnp-org:service:Layer3Forwarding:1</serviceType>
+<serviceId>urn:upnp-org:serviceId:L3Forwarding1</serviceId>
+<controlURL>/Layer3Forwarding</controlURL>
+<eventSubURL>/Layer3Forwarding</eventSubURL>
+<SCPDURL>http://192.168.1.1/upnp/Layer3Forwarding.xml</SCPDURL>
+</service>
+
+</serv
+iceList>
+<deviceList>
+<device>
+<deviceType>urn:schemas-upnp-org:device:WANDevice:1</deviceType>
+<friendlyName>WANDevice</friendlyName>
+<manufacturer>corega Inc.</manufacturer>
+<manufacturerURL>http://www.corega.com</manufacturerURL>
+<modelDescription>BROADBAND ROUTER</modelDescription>
+<modelName>CG-WLBARAG2</modelName>
+<modelNumber>1</modelNumber>
+<modelURL>http://www.corega.com</modelURL>
+<serialNumber>0000001</serialNumber>
+<UDN>uuid:141b5d20-1dd2-11b2-85d2-000a796dc45a</UDN>
+<UPC>123456789</UPC>
+<serviceList>
+<service>
+<serviceType>urn:schemas-upnp-org:service:WANCommonInterfaceConfig:1</serviceType>
+<serviceId>ur
+n:upnp-org:serviceId:WANCommonInterfaceConfig</serviceId>
+<controlURL>/WANCommonInterfaceConfig</controlURL>
+<eventSubURL>/WANCommonInterfaceConfig</eventSubURL>
+<SCPDURL>http://192.168.1.1/upnp/WANCmmonIFConfig.xml</SCPDURL>
+</service>
+</serviceList>
+<deviceList>
+<device>
+<deviceType>urn:schemas-upnp-org:device:WANConnectionDevice:1</deviceType>
+<friendlyName>WANConnectionDevice</friendlyName>
+<manufacturer>corega Inc.</manufacturer>
+<manufacturerURL>http://www.corega.com</manufacturerURL>
+<modelDescription>BROADBAND ROUTER</modelDescription>
+<modelName>CG-WLBARAG2</modelName>
+<modelNumber>1</modelNumber>
+<modelURL>http://www.corega.com</modelURL>
+<serialNumber>0000001</serialNumber>
+<UDN>uuid:14b57a40-1dd2-11b2-88bb-000a796dc45a</UDN>
+
+<UPC>123456789</UPC>
+<serviceList>
+<service>
+<serviceType>urn:schemas-upnp-org:service:WANEthernetLinkConfig:1</serviceType>
+<serviceId>urn:upnp-org:serviceId:WANEthernetLinkConfig</serviceId>
+<controlURL>/WANEthernetLinkConfig</controlURL>
+<eventSubURL>/WANEthernetLinkConfig</eventSubURL> 
+<SCPDURL>http://192.168.1.1/upnp/WANEthernetLinkConfig.xml</SCPDURL>
+</service>
+<service>
+<serviceType>urn:schemas-upnp-org:service:WANPPPConnection:1</serviceType>
+<serviceId>urn:upnp-org:serviceId:WANPPPConnection1</serviceId>
+<controlURL>/WANPPPConnection?1</controlURL>
+<eventSubURL>/WANPPPConnection?1</eventSubURL>
+<SCPDURL>http:
+//192.168.1.1/upnp/WANIPConnection.xml</SCPDURL>
+</service>
+<service>
+<serviceType>urn:schemas-upnp-org:service:WANPPPConnection:1</serviceType>
+<serviceId>urn:upnp-org:serviceId:WANPPPConnection2</serviceId>
+<controlURL>/WANPPPConnection?2</controlURL>
+<eventSubURL>/WANPPPConnection?2</eventSubURL>
+<SCPDURL>http://192.168.1.1/upnp/WANIPConnection.xml</SCPDURL>
+</service>
+
+</serviceList>
+</device>
+</deviceList>
+</device>
+</deviceList>
+<presentationURL>http://192.168.1.1/</presentationURL>.
+</device>
+</root>
+
+GET /upnp/WANEthernetLinkConfig.xml HTTP/1.1
+Accept: text/xml, application/xml
+User-Agent: Mozilla/4.0 (compatible; UPnP/1.0; Windows NT/5.1)
+Host: 192.168.1.1
+Connection: Keep-Alive
+Cache-Control: no-cache
+Pragma: no-cache
+
+
+HTTP/1.0 200 OK
+Server: Embedded HTTPD v1.00, 1999(c) All rights reserved.
+Content-length: 826
+Accept-ranges: bytes
+Content-type: text/xml
+Keep-Alive: timeout=1, max=50
+Connection: Keep-Alive
+
+<?xml version="1.0"?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <actionList>
+    <action>
+    <name>GetEthernetLinkStatus</name>
+      <argumentList>
+        <argument>
+          <name>NewEthernetLinkStatus</name>
+          <direction>out</direction>
+         <relatedStateVariable>EthernetLinkStatus</relatedStateVariable>
+        </argument>
+      </argumentList>
+    </action>
+  </actionList>
+  <serviceStateTable>
+    <stateVariable sendEvents="yes">
+      <name>EthernetLinkStatus</name>
+      <dataType>string</dataType>
+      <allowedValueList>
+        <allowedValue>Up</allowedValue>
+        <allowedValue>Down</allowedValue>
+        </allowedValueList>
+    </stateVariable>
+  </serviceStateTable>
+</scpd
+>
+
+GET /upnp/WANIPConnection.xml HTTP/1.1
+Accept: text/xml, application/xml
+User-Agent: Mozilla/4.0 (compatible; UPnP/1.0; Windows NT/5.1)
+Host: 192.168.1.1
+Connection: Keep-Alive
+Cache-Control: no-cache
+Pragma: no-cache
+
+
+HTTP/1.0 200 OK
+Server: Embedded HTTPD v1.00, 1999(c) All rights reserved.
+Content-length: 9136
+Accept-ranges: bytes
+Content-type: text/xml
+Keep-Alive: timeout=1, max=50
+Connection: Keep-Alive
+
+<?xml version="1.0"?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+<specVersion>
+<major>1</major>
+<minor>0</minor>
+</specVersion>
+<actionList>
+<action>
+<name>SetConnectionType</name>
+<argumentList>
+<argument>
+<name>NewConnectionType</name>
+<direction>in</direction>
+<relatedStateVariable>ConnectionType</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>GetConnectionTypeInfo</name>
+<argumentList>
+<argument>
+<name>NewConnectionType</name>
+<direction>out</direction>
+<relatedStateVariable>ConnectionType</relatedStateVariable>
+</argument>
+<argument>
+<name>NewPossibleConnectionTypes</name>
+<direction>out</direction>
+<relatedStateVariable>PossibleConnectionTypes</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>RequestConnection</nam
+e>
+</action>
+<action>
+<name>ForceTermination</name>
+</action>
+<action>
+<name>GetStatusInfo</name>
+<argumentList>
+<argument>
+<name>NewConnectionStatus</name>
+<direction>out</direction>
+<relatedStateVariable>ConnectionStatus</relatedStateVariable>
+</argument>
+<argument>
+<name>NewLastConnectionError</name>
+<direction>out</direction>
+<relatedStateVariable>LastCo
+nnecti
+onError</relatedStateVariable>
+</argument>
+<argument>
+<name>NewUptime</name>
+<direction>out</direction>
+<relatedStateVariable>Uptime</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>GetNATRSIPStatus</name>
+<argumentList>
+<argument>
+<name>NewRSIPAvailable</name>
+<direction>out</direction>
+<relatedStateVariable>RSIPAvailable</relatedStateVariable>
+</argument>
+<argument>
+<name>NewNATEnabled</name>
+<direction>out</direction>
+<relatedStateVariable>NATEnabled</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>GetExternalIPAddress</name>
+<argumentList>
+<argument>
+
+<name>NewExternalIPAddress</name>
+<direction>out</direction>
+<relatedStateVariable>ExternalIPAddress</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>GetGenericPortMappingEntry</name>
+<argumentList>
+<argument>
+<name>NewPortMappingIndex</name>
+<direction>in</direction>
+<relatedStateVariable>PortMappingNumberOfEntries</relatedStateVariable>
+</argument>
+<argument>
+<name>NewRemoteHost</name>
+<direction>out</direction>
+<relatedStateVariable>RemoteHost</relatedStateVariable>
+</argument>
+<argument>
+<name>NewExternalPort</name>
+<direction>out</direction>
+<relatedStateVariable>ExternalPort</relatedStateVariable>
+</argument>
+<argument>
+<name>NewProtocol</name>
+<direction>out</direction>
+<relatedStateVariable>P
+ortMappingProtocol</relatedStateVariable>
+</argument>
+<argument>
+<name>NewInternalPort</name>
+<direction>out</direction>
+<relatedStateVariable>InternalPort</relatedStateVariable>
+</argument>
+<argument>
+<name>NewInternalClient</name>
+<direction>out</direction>
+<relatedStateVariable>InternalClient</relatedStateVariable>
+</argument>
+<argument>
+<name>NewEnabled</name>
+<direction>out</direction>
+<relatedStateVariable>PortMappingEnabled</relatedStateVariable>
+</argument>
+<argument>
+<name>NewPortMappingDescription</name>
+<direction>out</direction>
+<relatedStateVariable>PortMappingDescription</relatedStateVariable>
+</argu
+ment>
+<argument>
+<name>NewLeaseDuration</name>
+<direction>out</direction>
+<relatedStateVariable>PortMappingLeaseDuration</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>GetSpecificPortMappingEntry</name>
+<argumentList>
+<argument>
+<name>NewRemoteHost</name>
+<direction>in</direction>
+<relatedStateVariable>RemoteHost</relatedStateVariable>
+</argument>
+<argument>
+<name>NewExternalPort</name>
+<direction>in</direction>
+<relatedStateVariable>ExternalPort</relatedStateVariable>
+</argument>
+<argument>
+<name>NewProtocol</name>
+<direction>in</direction>
+<relatedStateVariable>PortMappingProtocol</relatedStateVariable>
+</argument>
+<argument>
+<name>NewInternalPort</name>
+<direction>out</direction>
+<relatedStateV
+ariable>InternalPort</relatedStateVariable>
+</argument>
+<argument>
+<name>NewInternalClient</name>
+<direction>out</direction>
+<relatedStateVariable>InternalClient</relatedStateVariable>
+</argument>
+<argument>
+<name>NewEnabled</name>
+<direction>out</direction>
+<relatedStateVariable>PortMappingEnabled</relatedStateVariable>
+</argument>
+<argument>
+<name>NewPortMappingDescription</name>
+<direction>out</direction>
+<relatedStateVariable>PortMappingDescription</relatedStateVariable>
+</argument>
+<argument>
+<name>NewLeaseDuration</name>
+<direction>out</direction>
+<relatedStateVariable>PortMappingLeaseDuration</relatedStateVa
+riable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>AddPortMapping</name>
+<argumentList>
+<argument>
+<name>NewRemoteHost</name>
+<direction>in</direction>
+<relatedStateVariable>RemoteHost</relatedStateVariable>
+</argument>
+<argument>
+<name>NewExternalPort</name>
+<direction>in</direction>
+<relatedStateVariable>ExternalPort</relatedStateVariable>
+</argument>
+<argument>
+<name>NewProtocol</name>
+<direction>in</direction>
+<relatedStateVariable>PortMappingProtocol</relatedStateVariable>
+</argument>
+<argument>
+<name>NewInternalPort</name>
+<direction>in</direction>
+<relatedStateVariable>InternalPort</relatedStateVariable>
+</argument>
+<argument>
+<name>NewInternalClient</name>
+<direction>in</direction>
+<relatedStateVariable>Int
+ernalClient</relatedStateVariable>
+</argument>
+<argument>
+<name>NewEnabled</name>
+<direction>in</direction>
+<relatedStateVariable>PortMappingEnabled</relatedStateVariable>
+</argument>
+<argument>
+<name>NewPortMappingDescription</name>
+<direction>in</direction>
+<relatedStateVariable>PortMappingDescription</relatedStateVariable>
+</argument>
+<argument>
+<name>NewLeaseDuration</name>
+<direction>in</direction>
+<relatedStateVariable>PortMappingLeaseDuration</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>DeletePortMapping</name>
+<argumentList>
+<argument>
+<name>NewRemoteHost</name>
+<direction
+>in</direction>
+<relatedStateVariable>RemoteHost</relatedStateVariable>
+</argument>
+<argument>
+<name>NewExternalPort</name>
+<direction>in</direction>
+<relatedStateVariable>ExternalPort</relatedStateVariable>
+</argument>
+<argument>
+<name>NewProtocol</name>
+<direction>in</direction>
+<relatedStateVariable>PortMappingProtocol</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+</actionList>
+<serviceStateTable>
+<stateVariable sendEvents="no">
+<name>ConnectionType</name>
+<dataType>string</dataType>
+</stateVariable>
+<stateVariable sendEvents="yes">
+<name>PossibleConnectionTypes</name>
+<dataType>string</dataType>
+<allowedValueList>
+<allowedValue>Unconfigured</allowedValue>
+<allowedValue>IP_Routed</allowedValue>
+<allowedValue>I
+P_Bridged</allowedValue>
+</allowedValueList>
+</stateVariable>
+<stateVariable sendEvents="yes">
+<name>ConnectionStatus</name>
+<dataType>string</dataType>
+<defaultValue>Unconfigured</defaultValue>
+<allowedValueList>
+<allowedValue>Unconfigured</allowedValue>
+<allowedValue>Connected</allowedValue>
+<allowedValue>Disconnected</allowedValue>
+</allowedValueList>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>Uptime</name>
+<dataType>ui4</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>LastConnectionError</name>
+<dataType>string</dataType>
+<allowedValueList>
+<allowedValue>ERROR_NONE</allowedValue>
+
+<allowedValue>ERROR_UNKNOWN</allowedValue>
+</allowedValueList>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>RSIPAvailable</name>
+<dataType>boolean</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>NATEnabled</name>
+<dataType>boolean</dataType>
+</stateVariable>
+<stateVariable sendEvents="yes">
+<name>ExternalIPAddress</name>
+<dataType>string</dataType>
+</stateVariable>
+<stateVariable sendEvents="yes">
+<name>PortMappingNumberOfEntries</name>
+<dataType>ui2</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>PortMappingEnabled</name>
+<dataType>boolean</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>PortMappingLeaseDuration</name>
+<dataType>ui4</dataType>
+</stateVariable>
+<sta
+teVariable sendEvents="no">
+<name>RemoteHost</name>
+<dataType>string</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>ExternalPort</name>
+<dataType>ui2</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>InternalPort</name>
+<dataType>ui2</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>PortMappingProtocol</name>
+<dataType>string</dataType>
+<allowedValueList>
+<allowedValue>TCP</allowedValue>
+<allowedValue>UDP</allowedValue>
+</allowedValueList>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>InternalClient</name>
+<dataType>string</dataType>
+</stateVariable>
+<
+stateVariable sendEvents="no">
+<name>PortMappingDescription</name>
+<dataType>string</dataType>
+</stateVariable>
+.<stateVariable sendEvents="yes">
+.    <name>X_Name</name>
+..<dataType>string</dataType>
+.</stateVariable>
+</serviceStateTable>
+</scpd>
+
+
+GET /upnp/WANIPConnection.xml HTTP/1.1
+Accept: text/xml, application/xml
+User-Agent: Mozilla/4.0 (compatible; UPnP/1.0; Windows NT/5.1)
+Host: 192.168.1.1
+Connection: Keep-Alive
+Cache-Control: no-cache
+Pragma: no-cache
+
+
+HTTP/1.0 200 OK
+Server: Embedded HTTPD v1.00, 1999(c) All rights reserved.
+Content-length: 9136
+Accept-ranges: bytes
+Content-type: text/xml
+Keep-Alive: timeout=1, max=50
+Connection: Keep-Alive
+
+<?xml version="1.0"?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+<specVersion>
+<major>1</major>
+<minor>0</minor>
+</specVersion>
+<actionList>
+<action>
+<name>SetConnectionType</name>
+<argumentList>
+<argument>
+<name>NewConnectionType</name>
+<direction>in</direction>
+<relatedStateVariable>ConnectionType</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>GetConnectionTypeInfo</name>
+<argumentList>
+<argument>
+<name>NewConnectionType</name>
+<direction>out</direction>
+<relatedStateVariable>ConnectionType</relatedStateVariable>
+</argument>
+<argument>
+<name>NewPossibleConnectionTypes</name>
+<direction>out</direction>
+<relatedStateVariable>PossibleConnectionTypes</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>RequestConnection</nam
+e>
+</action>
+<action>
+<name>ForceTermination</name>
+</action>
+<action>
+<name>GetStatusInfo</name>
+<argumentList>
+<argument>
+<name>NewConnectionStatus</name>
+<direction>out</direction>
+<relatedStateVariable>ConnectionStatus</relatedStateVariable>
+</argument>
+<argument>
+<name>NewLastConnectionError</name>
+<direction>out</direction>
+<relatedStateVariable>LastCo
+nnecti
+onError</relatedStateVariable>
+</argument>
+<argument>
+<name>NewUptime</name>
+<direction>out</direction>
+<relatedStateVariable>Uptime</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>GetNATRSIPStatus</name>
+<argumentList>
+<argument>
+<name>NewRSIPAvailable</name>
+<direction>out</direction>
+<relatedStateVariable>RSIPAvailable</relatedStateVariable>
+</argument>
+<argument>
+<name>NewNATEnabled</name>
+<direction>out</direction>
+<relatedStateVariable>NATEnabled</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>GetExternalIPAddress</name>
+<argumentList>
+<argument>
+
+<name>NewExternalIPAddress</name>
+<direction>out</direction>
+<relatedStateVariable>ExternalIPAddress</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>GetGenericPortMappingEntry</name>
+<argumentList>
+<argument>
+<name>NewPortMappingIndex</name>
+<direction>in</direction>
+<relatedStateVariable>PortMappingNumberOfEntries</relatedStateVariable>
+</argument>
+<argument>
+<name>NewRemoteHost</name>
+<direction>out</direction>
+<relatedStateVariable>RemoteHost</relatedStateVariable>
+</argument>
+<argument>
+<name>NewExternalPort</name>
+<direction>out</direction>
+<relatedStateVariable>ExternalPort</relatedStateVariable>
+</argument>
+<argument>
+<name>NewProtocol</name>
+<direction>out</direction>
+<relatedStateVariable>P
+ortMappingProtocol</relatedStateVariable>
+</argument>
+<argument>
+<name>NewInternalPort</name>
+<direction>out</direction>
+<relatedStateVariable>InternalPort</relatedStateVariable>
+</argument>
+<argument>
+<name>NewInternalClient</name>
+<direction>out</direction>
+<relatedStateVariable>InternalClient</relatedStateVariable>
+</argument>
+<argument>
+<name>NewEnabled</name>
+<direction>out</direction>
+<relatedStateVariable>PortMappingEnabled</relatedStateVariable>
+</argument>
+<argument>
+<name>NewPortMappingDescription</name>
+<direction>out</direction>
+<relatedStateVariable>PortMappingDescription</relatedStateVariable>
+</argu
+ment>
+<argument>
+<name>NewLeaseDuration</name>
+<direction>out</direction>
+<relatedStateVariable>PortMappingLeaseDuration</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>GetSpecificPortMappingEntry</name>
+<argumentList>
+<argument>
+<name>NewRemoteHost</name>
+<direction>in</direction>
+<relatedStateVariable>RemoteHost</relatedStateVariable>
+</argument>
+<argument>
+<name>NewExternalPort</name>
+<direction>in</direction>
+<relatedStateVariable>ExternalPort</relatedStateVariable>
+</argument>
+<argument>
+<name>NewProtocol</name>
+<direction>in</direction>
+<relatedStateVariable>PortMappingProtocol</relatedStateVariable>
+</argument>
+<argument>
+<name>NewInternalPort</name>
+<direction>out</direction>
+<relatedStateV
+ariable>InternalPort</relatedStateVariable>
+</argument>
+<argument>
+<name>NewInternalClient</name>
+<direction>out</direction>
+<relatedStateVariable>InternalClient</relatedStateVariable>
+</argument>
+<argument>
+<name>NewEnabled</name>
+<direction>out</direction>
+<relatedStateVariable>PortMappingEnabled</relatedStateVariable>
+</argument>
+<argument>
+<name>NewPortMappingDescription</name>
+<direction>out</direction>
+<relatedStateVariable>PortMappingDescription</relatedStateVariable>
+</argument>
+<argument>
+<name>NewLeaseDuration</name>
+<direction>out</direction>
+<relatedStateVariable>PortMappingLeaseDuration</relatedStateVa
+riable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>AddPortMapping</name>
+<argumentList>
+<argument>
+<name>NewRemoteHost</name>
+<direction>in</direction>
+<relatedStateVariable>RemoteHost</relatedStateVariable>
+</argument>
+<argument>
+<name>NewExternalPort</name>
+<direction>in</direction>
+<relatedStateVariable>ExternalPort</relatedStateVariable>
+</argument>
+<argument>
+<name>NewProtocol</name>
+<direction>in</direction>
+<relatedStateVariable>PortMappingProtocol</relatedStateVariable>
+</argument>
+<argument>
+<name>NewInternalPort</name>
+<direction>in</direction>
+<relatedStateVariable>InternalPort</relatedStateVariable>
+</argument>
+<argument>
+<name>NewInternalClient</name>
+<direction>in</direction>
+<relatedStateVariable>Int
+ernalClient</relatedStateVariable>
+</argument>
+<argument>
+<name>NewEnabled</name>
+<direction>in</direction>
+<relatedStateVariable>PortMappingEnabled</relatedStateVariable>
+</argument>
+<argument>
+<name>NewPortMappingDescription</name>
+<direction>in</direction>
+<relatedStateVariable>PortMappingDescription</relatedStateVariable>
+</argument>
+<argument>
+<name>NewLeaseDuration</name>
+<direction>in</direction>
+<relatedStateVariable>PortMappingLeaseDuration</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+<action>
+<name>DeletePortMapping</name>
+<argumentList>
+<argument>
+<name>NewRemoteHost</name>
+<direction
+>in</direction>
+<relatedStateVariable>RemoteHost</relatedStateVariable>
+</argument>
+<argument>
+<name>NewExternalPort</name>
+<direction>in</direction>
+<relatedStateVariable>ExternalPort</relatedStateVariable>
+</argument>
+<argument>
+<name>NewProtocol</name>
+<direction>in</direction>
+<relatedStateVariable>PortMappingProtocol</relatedStateVariable>
+</argument>
+</argumentList>
+</action>
+</actionList>
+<serviceStateTable>
+<stateVariable sendEvents="no">
+<name>ConnectionType</name>
+<dataType>string</dataType>
+</stateVariable>
+<stateVariable sendEvents="yes">
+<name>PossibleConnectionTypes</name>
+<dataType>string</dataType>
+<allowedValueList>
+<allowedValue>Unconfigured</allowedValue>
+<allowedValue>IP_Routed</allowedValue>
+<allowedValue>I
+P_Bridged</allowedValue>
+</allowedValueList>
+</stateVariable>
+<stateVariable sendEvents="yes">
+<name>ConnectionStatus</name>
+<dataType>string</dataType>
+<defaultValue>Unconfigured</defaultValue>
+<allowedValueList>
+<allowedValue>Unconfigured</allowedValue>
+<allowedValue>Connected</allowedValue>
+<allowedValue>Disconnected</allowedValue>
+</allowedValueList>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>Uptime</name>
+<dataType>ui4</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>LastConnectionError</name>
+<dataType>string</dataType>
+<allowedValueList>
+<allowedValue>ERROR_NONE</allowedValue>
+
+<allowedValue>ERROR_UNKNOWN</allowedValue>
+</allowedValueList>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>RSIPAvailable</name>
+<dataType>boolean</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>NATEnabled</name>
+<dataType>boolean</dataType>
+</stateVariable>
+<stateVariable sendEvents="yes">
+<name>ExternalIPAddress</name>
+<dataType>string</dataType>
+</stateVariable>
+<stateVariable sendEvents="yes">
+<name>PortMappingNumberOfEntries</name>
+<dataType>ui2</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>PortMappingEnabled</name>
+<dataType>boolean</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>PortMappingLeaseDuration</name>
+<dataType>ui4</dataType>
+</stateVariable>
+<sta
+teVariable sendEvents="no">
+<name>RemoteHost</name>
+<dataType>string</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>ExternalPort</name>
+<dataType>ui2</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>InternalPort</name>
+<dataType>ui2</dataType>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>PortMappingProtocol</name>
+<dataType>string</dataType>
+<allowedValueList>
+<allowedValue>TCP</allowedValue>
+<allowedValue>UDP</allowedValue>
+</allowedValueList>
+</stateVariable>
+<stateVariable sendEvents="no">
+<name>InternalClient</name>
+<dataType>string</dataType>
+</stateVariable>
+<
+stateVariable sendEvents="no">
+<name>PortMappingDescription</name>
+<dataType>string</dataType>
+</stateVariable>
+.<stateVariable sendEvents="yes">
+.    <name>X_Name</name>
+..<dataType>string</dataType>
+.</stateVariable>
+</serviceStateTable>
+</scpd>
+
+

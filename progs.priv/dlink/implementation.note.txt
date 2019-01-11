@@ -1,0 +1,186 @@
+
+o Board layout
+
+   In config.sh, the following nodes will be filled in.
+   These are the layout config of the board.
+
+   /runtime/layout/image_sign	- image signature.
+   /runtime/layout/wanif	- physical interface name of the WAN port. 
+   /runtime/layout/lanif	- physical interface name of the LAN port.
+   /runtime/layout/wlanif	- physical interface name of the WLAN (11g) port.
+   /runtime/layout/wlanif_11a	- physical interface name of the WLAN (11a) port.
+   /runtime/layout/wanmac	- permanent mac address of the WAN port.
+   /runtime/layout/lanmac	- permanent mac address of the LAN port.
+   /runtime/layout/wlanmac	- permanent mac address of the WLAN port.
+
+   /runtime/layout/wireless/mode                - 0:N/A, 1:11g, 2:11a and g, 3:11a, 4:11a or g ...
+   /runtime/layout/wireless/atheros_super       - 0:N/A, 1:Supported
+
+o Template root
+
+   For debug purpose, the root path of the template and scripts is store in
+
+   /runtime/template_root
+
+   if this note is not set, default path is /etc/templates.
+   If you mount the developing templates and scripts via nfs, set this node
+   to test the developing one.
+
+o LAN UP information
+
+   The following nodes should be fill in when LANUP.
+
+   /runtime/sys/info/lanmac		- LAN mac address.
+
+   There is no runtime information for LAN side, the following
+   nodes should be used as LAN informations.
+
+   /lan/ethernet/ip			- IP address of LAN interface.
+   /lan/ethernet/netmask		- Subnet Mask of LAN interface.
+   /runtime/layout/lanif		- Interface name of LAN.
+
+o WAN UP information.
+
+   The following nodes should be fill in when WANUP.
+
+   /runtime/wan/inf:1/connecttype	- connection type
+   					  1:static, 2:dhcp, 3:pppoe 4: pptp, 5: l2tp 6: multi-pppoe 7: bigpond
+   /runtime/wan/inf:1/connectstatus	- connection status
+   /runtime/wan/inf:1/ip		- IP address of the current WAN port.
+   /runtime/wan/inf:1/netmask		- Subnet mask of the current WAN port.
+   /runtime/wan/inf:1/gateway		- default gateway of the current WAN port.
+   /runtime/wan/inf:1/primarydns	- Primary DNS
+   /runtime/wan/inf:1/secondarydns	- Secondary DNS
+   /runtime/wan/inf:1/linktype		- physical connection type
+   					  0: disconnect, 1:100Full, 2: 100half, 3: 10 full, 4: 10half
+   /runtime/wan/inf:1/mac		- MAC address of the current WAN port.
+   /runtime/wan/inf:1/uptime		- Time stamp of the connection bring up.
+   /runtime/wan/inf:1/domain		- Domain name from DHCP server.
+   /runtime/wan/inf:1/interface		- logical interface name.
+   /runtime/wan/inf:1/sessionid		- PPPoE session id
+   /runtime/wan/inf:1/mtu		- mtu
+   /runtime/wan/inf:1/pppoetype		- pppoe type.
+
+
+o Clone WAN port MAC address
+
+    clone_mac.php
+
+    Need the following variables to require clone_mac.php
+    $clonemac			- target mac address
+    $curr_wanmac		- current active mac address
+    $orig_wanmac		- permanent mac address
+    $wanif			- the interface name of the WAN port.
+
+o WAN mode
+
+    wan_static.php		- Static IP
+    wan_dhcp.php		- DHCP client
+    wan_mpppoe.php		- Multiple PPPoE dialup (for Corega)
+
+o WAN up actions
+
+   . flush RG rules (firewall, NAT, NAPT ...)
+
+   . restart the DHCP server when WAN is up.
+
+       This is to relay the domain got from WAN DHCP server to
+       LAN DHCP clients.
+
+   . Start DNRD.
+   . Restart klogd. (update WAN interface).
+   . Start NTP client.
+   . Start DynDNS client.
+
+   TODO: Need to change DynDNS as daemon, and update DNS (sync with server)
+         periodically.
+
+o WAN down actions
+
+   . Stop DNRD.
+
+   TODO: Need to stop DynDNS, if DynDNS is daemonized.
+
+o DHCP server
+
+    dhcpd.php
+
+    Need the following variables to require dhcpd.php
+    $dhcpd_if			- target interface
+    $dhcpd_clearleases		- clean leases file.
+
+
+o PPP
+
+    ppp_options.php	- generate ppp options file.
+
+	/runtime/ppp/linkname store the linkname of this options file for.
+	/runtime/ppp/options/{$linkname} store the option for this option
+	file. If the linkname is empty, the options should be stored under
+	/runtime/ppp/options instead.
+
+    ppp_setup.php	- generate script to bring up ppp connection.
+
+	variable require for ppp_setup.php ...
+	$ppp_type		- PPP connection type, pppoe/pptp/l2tp
+	$ppp_linkname		- Sessino name of this connection
+	$ppp_username		- user name
+	$ppp_mtu		- Use to set mtu and mru
+	$ppp_idle		- Idle timeout
+	$ppp_persist		- Auto reconnect
+	$ppp_demand		- Connect on demand
+	$ppp_staticip		- Local ip address
+	$ppp_usepeerdns		- Auto DNS
+	$ppp_defaultroute	- set this connection as defaultroute.
+	$pppoe_if		- interface name
+	$pppoe_acname		- PPPoE AC name
+	$pppoe_svcname		- PPPoE Service name
+	$pptp_server		- PPTP server
+	$l2tp_server		- L2TP server
+
+o iptable chains
+
+	rules number of each iptable chains
+
+	/runtime/iptables/mangle/pre_proute	- PRE_PROUTE
+	/runtime/iptables/mangle/pre_mark	- PRE_MARK
+
+	/runtime/iptables/nat/pre_macfilter	- PRE_MACFILTER
+	/runtime/iptables/nat/pre_dos		- PRE_DOS
+	/runtime/iptables/nat/pre_upnp		- PRE_UPNP
+	/runtime/iptables/nat/pre_vrtsrv	- PRE_VRTSRV
+	/runtime/iptables/nat/pre_misc		- PRE_MISC
+	/runtime/iptables/nat/pre_dmz		- PRE_DMZ
+	/runtime/iptables/nat/pre_portt		- PRE_PORTT
+	/runtime/iptables/nat/pst_vrtsrv	- PST_VRTSRV
+
+	/runtime/iptables/filter/for_portt	- FOR_PORTT
+	/runtime/iptables/filter/for_dnat	- FOR_DNAT
+	/runtime/iptables/filter/for_firewall	- FOR_FIREWALL
+	/runtime/iptables/filter/for_ipfilter	- FOR_IPFILTER
+	/runtime/iptables/filter/for_vpn	- FOR_VPN
+	/runtime/iptables/filter/for_blocking	- FOR_BLOCKING
+	/runtime/iptables/filter/in_blocking	- IN_BLOCKING
+
+o rg
+
+	Variables available after require flush_readconfig.php
+
+	$wanmode		- WAN mode
+	$lanif			- LAN interface name
+	$lanip			- LAN ipaddress
+	$lanmask		- LAN subnet mask
+	$wan1if			- WAN interface name
+	$wan1ip			- WAN ipaddress
+	$wan1id			- profile id of session 1 (Multi-PPPoE)
+	$wan2if			- WAN interface name of session 2 (Multi-PPPoE)
+	$wan2ip			- WAN ipaddress of Session 2 (Multi-PPPoE)
+	$wan2id			- profile id of session 2 (Multi-PPPoE)
+
+o main chain switch
+
+	/runtime/func/ipfilter	- FOR_IPFILTER
+	/runtime/func/urlfilter	- FOR_BLOCKING
+	/runtime/func/vrtsrv	- PRE_MARK, PRE_VRTSRV, FOR_DNAT, PST_VRTSRV
+	/runtime/func/dmz	- PRE_DMZ, FOR_DNAT
+	/runtime/func/upnp	- PRE_UPNP, FOR_DNAT

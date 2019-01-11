@@ -1,0 +1,145 @@
+#!/bin/sh
+RGENV="/dev/mtdblock/3"
+BDCFG="/dev/mtdblock/3"
+
+case "$1" in
+freset)
+	/etc/scripts/misc/profile.sh reset
+	/etc/scripts/misc/profile.sh put
+	;;
+save)
+	/etc/scripts/misc/profile.sh put
+	;;
+restart)
+	# Stop system
+	/etc/scripts/system.sh stop
+	# remove all interfaces
+	wlanconfig ath0 destroy
+	rmmod ath_ahb
+	# Reset the database
+	/etc/scripts/misc/profile.sh get
+        [ -f /etc/scripts/set_nodes.sh ] && /etc/scripts/set_nodes.sh
+        [ -f /etc/scripts/brand.sh ] && /etc/scripts/brand.sh
+        /etc/templates/timezone.sh set
+	# Start wlan interface
+	ccode=`rgcfg getenv -n $RGENV -e countrycode`
+	[ "$ccode" = "" ] && ccode="840"
+	insmod /lib/modules/ath_ahb.o countrycode=$ccode
+	wlanconfig ath0 create wlandev wifi0 wlanmode ap
+	env_wlan=`rgcfg getenv -n $RGENV -e wlanmac`
+        [ "$env_wlan" = "" ] && env_wlan="00:13:10:d2:00:01"
+        ifconfig ath0 hw ether $env_wlan
+	# Start eth interface
+	env_wan=`rgcfg getenv -n $RGENV -e wanmac`
+	[ "$env_wan" = "" ] && env_wan="00:13:10:d2:00:02"
+	ifconfig eth0 down
+	ifconfig eth0 hw ether $env_wan up
+	rgdb -i -s /runtime/wan/inf:1/mac $env_wan
+	# setup extended function for runtime node
+        [ -f /etc/scripts/setext.sh ] && /etc/scripts/setext.sh
+	# start the system
+	/etc/scripts/system.sh start
+	;;
+init)
+	BDCMD=""
+	RGCMD=""
+	LANMAC=`echo -e $2 | tr [A-Z] [a-z]`
+	WANMAC=`echo -e $3 | tr [A-Z] [a-z]`
+	HWREV="D2"
+	if [ "$LANMAC" != "" ]; then
+		BDCMD="$BDCMD -e wlan0Mac=$LANMAC"
+		RGCMD="$RGCMD -e lanmac=$LANMAC -e wlanmac=$LANMAC"
+	fi
+	if [ "$WANMAC" != "" ]; then
+		BDCMD="$BDCMD -e enet0Mac=$WANMAC"
+		RGCMD="$RGCMD -e wanmac=$WANMAC"
+	fi
+	if [ "$4" != "" ]; then
+		HWREV=$4
+	fi
+	/etc/templates/wlan.sh stop
+	echo "bdtool reset -d $BDCFG $BDCMD" > /dev/console
+	echo "rgcfg setenv -n $RGENV -e countrycode=840 -e hwrev=$HWREV $RGCMD -f" > /dev/console
+	echo 1 > /proc/spiflash/pp_enable
+	bdtool reset -d $BDCFG $BDCMD
+	rgcfg setenv -n $RGENV -e countrycode=840 -e hwrev=$HWREV $RGCMD -f
+	echo 0 > /proc/spiflash/pp_enable
+	;;
+setwanmac)
+	[ "$2" = "" ] && echo "usage error!" && exit 1
+	MACADDR=`echo -e $2 | tr [A-Z] [a-z]`
+	bdtool set -d $BDCFG -e enet0Mac=$MACADDR
+	rgcfg setenv -n $RGENV -e wanmac=$MACADDR
+	;;
+setlanmac)
+	[ "$2" = "" ] && echo "usage error!" && exit 1
+	MACADDR=`echo -e $2 | tr [A-Z] [a-z]`
+	bdtool set -d $BDCFG -e wlan0Mac=$MACADDR
+	rgcfg setenv -n $RGENV -e lanmac=$MACADDR -e wlanmac=$MACADDR
+	;;
+sethwrev)
+	[ "$2" = "" ] && echo "usage error!" && exit 1
+	rgcfg setenv -n $RGENV -e hwrev=$2
+	;;
+countrycode)
+	[ "$2" = "" ] && echo "usage error!" && exit 1
+	rgcfg setenv -n $RGENV -e countrycode=$2
+	;;
+gethwrev)
+	rgcfg getenv -n $RGENV -e hwrev
+	;;
+getwanmac)
+	rgcfg getenv -n $RGENV -e wanmac
+	;;
+getlanmac)
+	rgcfg getenv -n $RGENV -e lanmac
+	;;
+getcountrycode)
+	rgcfg getenv -n $RGENV -e countrycode
+	;;
+ver)
+	/etc/scripts/misc/ver.sh
+	;;
+clear)
+	echo "ffff" > $BDCFG
+	;;
+button)
+	case $2 in
+	freset_disable)
+		killall fresetd
+		;;
+	freset_enable)
+		fresetd&
+		;;
+	"")
+		cat /proc/ar231x/gpio06
+		;;
+	esac
+	;;
+*)
+	echo "Usage: mfc {command} <params>"
+	echo "Commands:"
+	echo "  init <lanmac> <wanmac> <hwrev>  Init flash"
+	echo "  setlanmac <lanmac>              Set LAN mac address"
+	echo "  setwanmac <wanmac>              Set WAN mac address"
+	echo "  countrycode <code>              Set country code"
+	echo "  sethwrev <hwrev>                Set H/W revision"
+	echo ""
+	echo "  freset                          Factory reset"
+	echo "  save                            Save current setting to flash"
+	echo ""
+	echo "  gethwrev                        Get H/W revision"
+	echo "  getwanmac                       Get current WAN mac address"
+	echo "  getlanmac                       Get current LAN mac address"
+	echo "  getcountrycode                  Get current country code"
+	echo "  restart                         Restart system (not reboot)"
+	echo "  ver                             Show firmware version"
+	echo ""
+	echo "  clear                           Clear radio config"
+	echo ""
+	echo "  button <freset_disable|freset_enable>"
+	echo "                                  Disable/Enable factory reset daemon"
+	echo "                                  Get factory reset button status"
+	;;
+esac
+exit 0

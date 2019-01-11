@@ -1,0 +1,7 @@
+#!/bin/sh
+layout_config="/etc/config/layout.conf.default"
+config="/var/run/rgdb.conf"
+defaultconfig="/etc/config/rgdb.conf.default"
+wan_config="/var/etc/config/wan.conf"
+image_sign="WRGG19"
+nvram="/dev/mtdblock/3"

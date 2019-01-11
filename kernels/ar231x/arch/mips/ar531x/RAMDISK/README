@@ -1,0 +1,40 @@
+How to build a ramdisk image for use as a root filesystem with AR531X
+
+Overview:
+In order to boot from a ramdisk root file system image, you will
+first create a root directory structure in the "rootdir" directory.
+Then run "make" to create a compressed root file system image in
+ramdisk.gz.  Finally, copy this image into your kernel source tree
+and remake the kernel.  The ramdisk image is then built into the
+kernel.  When the kernel starts, it is uncompressed into RAM, and
+used as a root file system.
+
+If you'd like to use a pre-built ramdisk.gz rather than build
+one yourself:
+  cp arch/mips/ar531x/RAMDISK/ramdisk.gz arch/mips/ramdisk/ramdisk.gz
+
+Here are the detailed steps to build your own:
+
+1) Modify Makefile to point KERNEL_SOURCE at your linux source tree.
+
+2) Copy whatever additional files/directories/links you'd like to
+   under rootdir.  Note that you're limited to CONFIG_BLK_DEV_RAM_SIZE
+   1KB blocks, as specified in your linux/.config file.
+   Examples:
+	Copy busybox to rootdir/bin/
+        [NOTE: Copy busybox.links to this directory to
+        cause the makelinks script to automatically
+        set up all of the necessary busybox command links
+        in the rootdir/bin directory].
+
+	Copy any wireless driver modules into rootdir tree
+
+   You might want to make a copy of the rootdir directory
+   before you modify it, just in case you want to get back
+   to the original.
+
+3) LOGIN AS ROOT (e.g. "su") and type "make"
+
+4) Copy the resulting ramdisk.gz to your linux source tree under
+       arch/mips/ramdisk/ramdisk.gz
+   (or "make install" will do this step for you)

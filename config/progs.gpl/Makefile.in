@@ -1,0 +1,33 @@
+#
+
+gsubdir-y :=
+gsubdir-n :=
+gsubdir-  :=
+
+gsubdir-$(RGAPPS_PROGS_GPL_IPTABLES_1_2_6A)	+= iptables-1.2.6a
+gsubidr-$(RGAPPS_PROGS_GPL_IPTABLES_1_2_7A)	+= iptables-1.2.7a
+gsubdir-$(RGAPPS_PROGS_GPL_IPTABLES_1_2_9)	+= iptables-1.2.9
+gsubdir-$(RGAPPS_PROGS_GPL_IPTABLES_1_3_5)	+= iptables-1.3.5
+gsubdir-$(RGAPPS_PROGS_GPL_DNRD_2_10)		+= dnrd-2.10
+gsubdir-$(RGAPPS_PROGS_GPL_PPTP_CONNTRACK_NAT)	+= pptp-conntrack-nat
+gsubdir-$(RGAPPS_PROGS_GPL_TELNETD)		+= telnetd
+gsubdir-$(RGAPPS_PROGS_GPL_UDHCP_0_9_8)		+= udhcp-0.9.8
+gsubdir-$(RGAPPS_PROGS_GPL_WIRELESS_TOOLS)	+= wireless_tools
+gsubdir-$(RGAPPS_PROGS_GPL_IPT_STRING)		+= ipt-string
+gsubdir-$(RGAPPS_PROGS_GPL_KLOGD)		+= klogd
+gsubdir-$(RGAPPS_PROGS_GPL_SYSLOGD)		+= syslogd
+gsubdir-$(RGAPPS_PROGS_GPL_MATHOPD)		+= mathopd
+gsubdir-$(RGAPPS_PROGS_GPL_MATHOPD_V2)		+= mathopd_v2
+gsubdir-$(RGAPPS_PROGS_GPL_PPPD_ALPHA)		+= pppd.alpha
+gsubdir-$(RGAPPS_PROGS_GPL_UDHCPCD)		+= udhcpcd
+gsubdir-$(RGAPPS_PROGS_GPL_UPNPD)		+= upnpd
+gsubdir-$(RGAPPS_PROGS_GPL_UPNPD_V2)		+= upnpd_v2
+gsubdir-$(RGAPPS_PROGS_GPL_BPALOGIN)		+= bpalogin-2.0.2
+gsubdir-$(RGAPPS_PROGS_GPL_IPROUTE2_2_6_8)	+= iproute2-2.6.8
+gsubdir-$(RGAPPS_PROGS_GPL_NETTOOLS_1_60)	+= net-tools-1.60
+gsubdir-$(RGAPPS_PROGS_GPL_HOSTAPD_0_3_7)	+= hostapd-0.3.7
+gsubdir-$(RGAPPS_PROGS_GPL_IVYUPDATER_1_05)	+= IvyUpdater-1.05
+gsubdir-$(RGAPPS_PROGS_GPL_ZEBRA)		+= zebra
+
+PROGS_GPL_SUBDIRS=$(gsubdir-y)
+

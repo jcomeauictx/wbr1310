@@ -1,0 +1,5 @@
+#!/bin/sh
+
+. /etc/config/defines
+LANIF=`scut -p LANIF= $layout_config`
+dhcpleases -f "/var/etc/udhcpd-$LANIF.lease" $1 $2

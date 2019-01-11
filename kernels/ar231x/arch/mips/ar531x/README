@@ -1,0 +1,68 @@
+Basic information for the AR531X Board Support Package
+
+This directory contains the "LBSP" -- Linux Board Support Package --
+for Linux on the Atheros AR531X Wireless System-On-a-Chip.  It is intended
+primarily as a building block for wireless products.  At this time, the
+AR531X Linux BSP is experimental code, and is actively UNDER CONSTRUCTION.
+
+Some components that are supported by this LBSP along with a standard 2.4
+Linux MIPS kernel include
+  R4Kc CPU
+  instruction and data caches
+  SDRAM
+  flash (Macronix, AMD, STS, etc.)
+  16550 serial port
+  ethernet MACs
+  ethernet PHY or PHY Switch (RealTek, Kendin, Marvell)
+  General-Purpose I/O pins
+  kernel debugging with kgdb
+
+This LBSP code does NOT include drivers for the wireless components of the
+chip/boards!  Drivers for those components may be distributed separately.
+In particular, the MADWiFi project under SourceForge supports (not yet!)
+wireless functions on the AR531X chipset.  See
+   http://www.sourceforge.net/projects/madwifi
+
+Files included in this BSP:
+ae531xlnx.c      - Linux-specific portions of the ethernet driver
+ae531xmac.c      - OS-independent AR531X ethernet MAC code
+ae531xmac.h      - OS-independent AR531X ethernet MAC software definitions
+ae531xreg.h      - OS-independent AR531X ethernet MAC hardware definitions
+ar531x.h         - OS-independent AR531X system hardware definitions
+ar531xlnx.h      - Linux-specific AR531X system definitions and externs
+defconfig-ar531x - Default Linux configuration file
+intr_recv.S      - Linux interrupt "glue" code
+ar531xirq.c      - Linux Interrupt Request management
+Makefile         - Linux makefile
+mvPhy.c          - OS-independent ethernet PHY code for Marvell Switch
+mvPhy.h          - OS-independent ethernet PHY definitions for Marvell Switch
+ar531xprom.c     - Linux prom "glue" code
+ar531xsetup.c    - Linux startup code
+ar531xdbg_io.c   - Support for kgdb-based debugging and for EARLY_PRINTK_HACK
+ar531xproc.c     - Pseudo-device driver for /proc/ar531x device
+ar531xgpio.c     - Support for General Purpose I/O pins
+ar531xwmacsl.c   - Wireless MAC Support Layer
+
+Additional files, distributed with the BSP:
+README           - This file
+README.BUILD     - Instructions for building a linux kernel from source
+README.EXECUTE   - Instructions for testing your linux kernel
+README.RAMDISK   - Instructions for building a root ramdisk image
+
+ramdisk.gz       - A binary ramdisk image, suitable for use with AR531X.
+DIFFS            - Directory that contains "patch" files (See README.BUILD)
+
+
+There are several ways to boot a vmlinux image on an AR531X board:
+  -You can boot in over ethernet from the vxWorks bootrom, which is preloaded
+   on all Atheros boards
+  -You can use an ICE (e.g. VisionICE) to load the vmlinux image.  You will
+   need appropriate register initialization (e.g. AP30.ini file)
+  -You can use the eCos RedBoot bootrom loader.  This is a full-featured
+   bootrom which as been ported to AR531x.  It can boot vmlinux over ethernet
+   or from flash.  Source code is available from Atheros.
+
+Please send comments, corrections, complaints, criticisms, suggestions,
+enhancements, requests, or any other reasonable communications regarding
+this effort, to "linux@atheros.com".  Your email will be received by a
+couple of engineers, and redirected as appropriate.

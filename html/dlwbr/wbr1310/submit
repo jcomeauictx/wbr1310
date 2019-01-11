@@ -1,0 +1,95 @@
+#!/bin/sh
+echo [$0] $1 ... > /dev/console
+TROOT=`rgdb -i -g /runtime/template_root`
+[ "$TROOT" = "" ] && TROOT="/etc/templates"
+case "$1" in
+COMMIT)
+	/etc/scripts/misc/profile.sh put >  /dev/console
+	;;
+WAN)
+	$TROOT/wan.sh restart > /dev/console &
+	;;
+LAN)
+	$TROOT/lan.sh restart > /dev/console
+	;;
+CLR_DEVSTATUS)
+        /etc/scripts/misc/nclr-devstatus.sh 20 &
+        ;;
+LAN_CHANGE)
+	rgdb -A /www/onlanchange.php > /var/run/lanchange.sh
+	sh /var/run/lanchange.sh > /dev/console
+	;;
+HTTPD)
+	$TROOT/webs.sh restart > /dev/console
+	;;
+HTTPD_PASSWD)
+	$TROOT/webs.sh password > /dev/console
+	logger -p 192.0 "Password changed"
+	;;
+DHCPD)
+	$TROOT/dhcpd.sh > /dev/console
+	;;
+DNSR)
+	$TROOT/dnrd.sh restart > /dev/console &
+	;;
+TIME)
+	$TROOT/timezone.sh
+	$TROOT/ntp.sh start > /dev/console
+	;;
+WLAN)
+	$TROOT/wlan.sh restart > /dev/console	
+	;;
+SYSLOG)
+	$TROOT/logs.sh > /dev/console &
+	;;
+FRESET)
+	/etc/scripts/misc/freset.sh > /dev/console &
+	;;
+REBOOT)
+	/etc/templates/wan.sh stop	> /dev/console
+	/etc/scripts/misc/nreboot.sh 3	> /dev/console &
+	;;
+RG)
+	$TROOT/rg.sh flushall	> /dev/console &
+	;;
+RG_FIREWALL)
+	$TROOT/rg.sh firewall	> /dev/console &
+	;;
+RG_IP_FILTER)
+	$TROOT/rg.sh ipfilter	> /dev/console &
+	;;
+RG_MAC_FILTER)
+	$TROOT/rg.sh macfilter	> /dev/console &
+	;;
+RG_BLOCKING)
+	$TROOT/rg.sh blocking	> /dev/console &
+	;;
+RG_VSVR)
+	$TROOT/rg.sh vrtsrv	> /dev/console &
+	;;
+RG_DMZ)
+	$TROOT/rg.sh dmz	> /dev/console &
+	;;
+RG_MISC)
+	/etc/scripts/misc/setwantype.sh	> /dev/console 
+	$TROOT/rg.sh misc		> /dev/console
+	$TROOT/rg.sh passthrough	> /dev/console
+	$TROOT/upnpd.sh restart		> /dev/console &
+	;;
+RG_APP)
+	$TROOT/rg.sh portt	> /dev/console &
+	;;
+DDNS)
+	$TROOT/dyndns.sh	> /dev/console &
+	;;
+SYSTEM)
+	/etc/scripts/system.sh restart &
+	;;
+*)
+	echo "Usage: submit {COMMIT|WAN|LAN|WLAN|HTTPD|HTTPD_PASSWD|DHCPD|DNSR|TIME|SYSLOG|FRESET|"
+	echo "               RG|RG_FIREWALL|RG_IP_FILTER|RG_MAC_FILTER|RG_VSVR|RG_DMZ|RG_MISC|"
+	echo "               RG_URL_FILTER|RG_DOMAIN_FILTER|RG_APP|DDNS|"
+	echo "               SYSTEM}"
+	;;
+esac
+exit 0

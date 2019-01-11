@@ -1,0 +1,41 @@
+#!/bin/sh
+usage="Usage: syslog [-g|-s] [xml node] {value}"
+case "$1" in
+-g)
+	echo [$0] get from script is deprecated !! > /dev/console
+	;;
+-s)
+	log_path="/var/log/messages"
+	tlog_path="/var/log/tlogsmsg"
+	smtp_msg_path="/var/log/smtp_message.txt"
+	case "$2" in
+	tlogs)
+		tlogs -l $log_path > $tlog_path
+		;;
+	clear)
+		date_time=`date | scut -f2 -n3`
+		echo "$date_time  |  SYS:038" > $log_path
+		tlogs -l $log_path > $tlog_path
+		;;
+	sendmail)
+		mail_server=`rgdb -g /sys/log/mailserver`
+		email_addr=`rgdb -g /sys/log/email`
+		mail_subject="Log Message."
+		mail_port="25"
+		src_host=`rgdb -g /sys/hostName`
+		from=`rgdb -g /sys/log/email`
+		reply=`rgdb -g /sys/log/email`
+
+		tlogs -l $log_path > $tlog_path
+		/usr/sbin/smtpclient -v -s "$mail_subject" -r "$reply" -f "$from" -H "$src_host" -S "$mail_server" -P "$mail_port" "$email_addr" < $tlog_path > $smtp_msg_path
+		logger -p 192.1 "SYS:004[$email_addr]"
+		;;
+	*)
+		echo $usage > /dev/console
+		;;
+	esac
+	;;
+*)
+	echo $usage > /dev/console
+	;;
+esac

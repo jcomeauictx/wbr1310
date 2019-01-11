@@ -1,0 +1,40 @@
+#!/bin/sh
+. /etc/config/defines
+WLIF=`scut -p WLIF= $layout_config`
+wlandir="/proc/$WLIF/"
+usage="Usage: stats [-g|-s] [xml node]"
+case "$1" in
+-g)
+	echo "usage rgdb -i -g instead !!" > /dev/console
+	;;
+-s)
+	case "$2" in
+	naptsession)
+		/usr/sbin/asession
+		;;
+	resetcounter)
+		IF=`rgdb -i -g /runtime/wan/inf:1/interface`
+		[ "$IF" != "" ] && echo $IF > /proc/driver/ifresetcnt
+		rgdb -i -s /runtime/stats/wan/inf:1/rx/packets 0
+		rgdb -i -s /runtime/stats/wan/inf:1/tx/packets 0
+		IF=`rgdb -i -g /runtime/layout/lanif`
+		[ "$IF" != "" ] && echo $IF > /proc/driver/ifresetcnt
+		rgdb -i -s /runtime/stats/lan/rx/packets 0
+		rgdb -i -s /runtime/stats/lan/tx/packets 0
+		IF=`rgdb -i -g /runtime/layout/wlanif`
+		[ "$IF" != "" ] && echo $IF > /proc/driver/ifresetcnt
+		rgdb -i -s /runtime/stats/wireless/rx/packets 0
+		rgdb -i -s /runtime/stats/wireless/tx/packets 0
+		;;
+	*)
+		echo $usage
+		exit 9
+		;;
+	esac
+	;;
+*)
+	echo $usage
+	exit 9
+	;;
+esac
+exit 0

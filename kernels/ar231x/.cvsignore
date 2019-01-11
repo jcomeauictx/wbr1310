@@ -1,0 +1,13 @@
+!core
+.SUMS
+.config
+.depend
+.hdepend
+.tmpconfig
+.tmpconfig.h
+.version
+System.map
+vmlinux
+vmlinux.64
+modules
+nohup.out

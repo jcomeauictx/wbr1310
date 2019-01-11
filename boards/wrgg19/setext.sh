@@ -1,0 +1,12 @@
+#!/bin/sh
+xmldbc -x /runtime/sys/uptime "get:uptime seconly"
+xmldbc -x /runtime/time/date "get:date +%m/%d/%Y"
+xmldbc -x /runtime/time/time "get:date +%T"
+xmldbc -x /runtime/stats/lan/rx/bytes		"get:scut -p br0: -f 1 /proc/net/dev"
+xmldbc -x /runtime/stats/lan/rx/packets 	"get:scut -p br0: -f 2 /proc/net/dev"
+xmldbc -x /runtime/stats/lan/tx/bytes		"get:scut -p br0: -f 9 /proc/net/dev"
+xmldbc -x /runtime/stats/lan/tx/packets 	"get:scut -p br0: -f 10 /proc/net/dev"
+xmldbc -x /runtime/stats/wireless/rx/bytes	"get:scut -p ath0: -f 1 /proc/net/dev"
+xmldbc -x /runtime/stats/wireless/rx/packets	"get:scut -p ath0: -f 2 /proc/net/dev"
+xmldbc -x /runtime/stats/wireless/tx/bytes	"get:scut -p ath0: -f 9 /proc/net/dev"
+xmldbc -x /runtime/stats/wireless/tx/packets	"get:scut -p ath0: -f 10 /proc/net/dev"

@@ -1,0 +1,23 @@
+      How to EXECUTE a linux image on an AR531X system
+
+There are currently three ways to run you vmlinux image:
+  1) Load it using the vxWorks bootrom that is supplied with the board.
+     You can load it over ethernet or from the TFFS file system, if you
+     have sufficient flash to store the image.
+  2) Load it using an ICE (e.g. VisionICE).
+  3) Use a bootrom loader, such as eCos RedBoot.
+
+After you have booted linux:
+  By default, the root filesystem on ramdisk is read-only.
+  To make it writable, use "mount -o remount w /".
+
+  The user-level commands are slightly non-standard, as they
+  are based on "busybox".
+
+  The "wget" command is included.  You can use wget to fetch
+  files from any ftp server.  So, for instance, you can fetch
+  a kernel module and then "insmod" it.
+
+Note that the standard source-level kernel debugger, kgdb, works well
+over the serial line with this port.  We use kgdb and the kgdb_demux perl
+script -- available over the www -- for debugging.

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+IF=$1
+DEV=$2
+SP=$3
+IP=$4
+RP=$5
+PA=$6
+
+echo $0: ifname $IF device $DEV speed $SP ip $IP remote $RP param $PA
+
+ifconfig $IF mtu 1492
+
+/etc/scripts/misc/wanup.sh &
