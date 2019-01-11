@@ -1,0 +1,115 @@
+
+o This file contains steps for building toolchain and building the image.
+
+Step 1. Install fedora linux 12 (choose Software Development) on 32bit CPU.
+
+Step 2. Building the toolchain
+
+  1) Please login as a normal user such as john, and copy the gpl file to normal user folder,
+     such as the folder /home/john
+
+  2) $cd /home/john
+
+  3) $tar zxvf WBR1310_GPL.tar.gz
+
+  4) $cd wbr1310
+
+  5) $./build_tool_chain.sh
+
+	  Please choose the "Target Ptocessor Architecture" as "Generic (MIPS I) (CONFIG_MIPS_ISA_1)",
+	  and keep other settings as the default value.
+
+		*
+		* Target Architecture Features and Options
+		*
+		Target Processor Architecture
+		> 1. Generic (MIPS I) (CONFIG_MIPS_ISA_1) (NEW)
+		  2. MIPS II (CONFIG_MIPS_ISA_2) (NEW)
+		  3. MIPS III (CONFIG_MIPS_ISA_3) (NEW)
+		  4. MIPS IV (CONFIG_MIPS_ISA_4) (NEW)
+		  5. MIPS32 (CONFIG_MIPS_ISA_MIPS32) (NEW)
+		  6. MIPS64 (CONFIG_MIPS_ISA_MIPS64) (NEW)
+		choice[1-6?]: 1
+		Target Processor Endianness
+		  1. Little Endian (ARCH_LITTLE_ENDIAN)
+		> 2. Big Endian (ARCH_BIG_ENDIAN)
+		choice[1-2?]: 2
+		Target CPU has a memory management unit (MMU) (ARCH_HAS_MMU) [Y/n/?] (NEW)
+		Enable floating point number support (UCLIBC_HAS_FLOATS) [Y/n/?] y
+	  	  Target CPU has a floating point unit (FPU) (HAS_FPU) [Y/n/?] (NEW)
+
+		*
+		* General Library Settings
+		*
+		Generate Position Independent Code (PIC) (DOPIC) [Y/n/?] y
+		Enable support for shared libraries (HAVE_SHARED) [Y/n/?] y
+		Compile native shared library loader (BUILD_UCLIBC_LDSO) [Y/n/?] (NEW)
+		  Only load shared libraries which can share their text segment (FORCE_SHAREABLE_TEXT_SEGMENTS) [N/y/?] n
+		  Native shared library loader 'ldd' support (LDSO_LDD_SUPPORT) [Y/n/?] y
+		  Enable shared library loader cache (LDSO_CACHE_SUPPORT) [Y/n/?] y
+		  Enable shared library loader preload file support (LDSO_PRELOAD_FILE_SUPPORT) [N/y/?] n
+			Shared library loader naming prefix (LDSO_BASE_FILENAME) [ld.so] ld.so
+		  Enable ELF RUNPATH tag support (LDSO_RUNPATH) [N/y/?] n
+		uClibc 0.9.27 compatibility (DL_FINI_CRT_COMPAT) [N/y/?] (NEW)
+
+  6) If you see the following messages,
+
+	  c-parse.y:1664.19-20: $$ for the midrule at $4 of `structsp_attr' has no declared type
+	  c-parse.y:1674.19-20: $$ for the midrule at $4 of `structsp_attr' has no declared type
+	  c-parse.y:1682.19-20: $$ for the midrule at $4 of `structsp_attr' has no declared type
+	  c-parse.y:1687.19-20: $$ for the midrule at $3 of `structsp_attr' has no declared type
+	  make[2]: *** [/home/john/wbr1310/buildroot/toolchain_build_mips/gcc-3.3.5/gcc/c-parse.c] Error 1
+	  make[2]: Leaving directory `/home/john/wbr1310/buildroot/toolchain_build_mips/gcc-3.3.5-initial/gcc'
+	  make[1]: *** [all-gcc] Error 2
+	  make[1]: Leaving directory `/home/john/wbr1310/buildroot/toolchain_build_mips/gcc-3.3.5-initial'
+	  make: *** [/home/john/wbr1310/buildroot/toolchain_build_mips/gcc-3.3.5-initial/.compiled] Error 2
+	  make: Leaving directory `/home/john/wbr1310/buildroot'
+
+	 then goto 7), else goto 10)
+
+  7) $vi buildroot/toolchain_build_mips/gcc-3.3.5/gcc/c-parse.y 
+
+	  a) Press "i" to enter edit mode
+
+	  b) Modify variable $$ to $<ttype>$ at line : 1664, 1674, 1682, 1687
+
+	  c) Press "Esc" to exit edit mode, then save and exit(:wq)
+
+  8) $make -C buildroot
+
+  9) $./build_tool_chain.sh
+
+  10) After build toolchain successfully, you will get the prompt line,
+	  "Use source ./setupenv to setup your environment variables !"
+
+
+Step 3. You can use the toolchain to build image now.
+
+  1) $source ./setupenv
+
+  2) $make
+
+  3) $cp kernel/wrgg19.config kernel/.config
+
+  4) $cd kernel
+  
+  5) $make menuconfig
+	
+	  a) Choose <Exit> at the bottom of the menu
+	
+	  b) Do you wish to save your new kernel configuration?
+		 Choose <Yes>		  
+  
+  6) $make
+
+  7) $make
+
+  8) $cd .. (pwd is /home/john/wbr1310)
+
+  9) $make
+
+  10) After make successfully, you will find the image file in ./images/.
+
+	  Upgrade the new firmware by web interface provide by device, 
+	  then you will get your specific image.
+

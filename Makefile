@@ -67,7 +67,8 @@ ifeq ($(strip $(RGAPPS_HAVE_DOT_CONFIG)),y)
 
 ifeq (config.mk, $(wildcard config.mk))
 CLEAR_TO_GO:=y
-all: kernel progs progs_install tftpimage release
+#all: kernel progs progs_install tftpimage release
+all: progs progs_install release
 	@echo "Done !!!"
 
 
