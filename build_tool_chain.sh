@@ -1,12 +1,18 @@
 #!/bin/sh
 
 if [ ! -d buildroot ]; then
-	echo -e "\033[32mStart to build the tool chain !\033[0m"
 	tar zxvf buildroot.tgz
-	cp buildroot/configs/mipseb_gcc-3.3.5_uclibc-0.9.28.config buildroot/.config
-	make -C buildroot oldconfig
-	make -C buildroot
 fi
+if [ ! -e buildroot/.config ]; then
+	cp buildroot/configs/mipseb_gcc-3.3.5_uclibc-0.9.28.config \
+	 buildroot/.config
+fi
+if [ ! -e buildroot/.config.cmd ]; then
+	make -C buildroot oldconfig
+fi
+exit
+	echo -e "\033[32mStart to build the tool chain !\033[0m"
+	make -C buildroot
 
 TOPDIR=`pwd`
 ENV_VAR=setupenv
