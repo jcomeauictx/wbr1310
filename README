@@ -69,13 +69,7 @@ Step 2. Building the toolchain
 
 	 then goto 7), else goto 10)
 
-  7) $vi buildroot/toolchain_build_mips/gcc-3.3.5/gcc/c-parse.y 
-
-	  a) Press "i" to enter edit mode
-
-	  b) Modify variable $$ to $<ttype>$ at line : 1664, 1674, 1682, 1687
-
-	  c) Press "Esc" to exit edit mode, then save and exit(:wq)
+  7) $patch -p0 < c-parse.y.patch
 
   8) $make -C buildroot
 
