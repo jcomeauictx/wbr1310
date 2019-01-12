@@ -245,7 +245,7 @@ function do_cancel()
 							<select id="year" name="year" size=1 style="WIDTH: 50px">
 <?
 								$i=2001;
-								while ($i<2012)
+								while ($i<2038)
 								{
 									$i++;
 									echo "<option value=".$i.">".$i."</option>\n";
