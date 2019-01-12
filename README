@@ -12,13 +12,13 @@ Step 2. Building the toolchain
 
   2) $cd /home/john
 
-  3) $tar zxvf WBR1310_GPL.tar.gz
+  3) $git clone https://github.com/jcomeauictx/wbr1310.git
 
   4) $cd wbr1310
 
   5) $./build_tool_chain.sh
 
-	  Please choose the "Target Ptocessor Architecture" as "Generic (MIPS I) (CONFIG_MIPS_ISA_1)",
+	  Please choose the "Target Processor Architecture" as "Generic (MIPS I) (CONFIG_MIPS_ISA_1)",
 	  and keep other settings as the default value.
 
 		*
