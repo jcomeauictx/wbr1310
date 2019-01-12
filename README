@@ -109,3 +109,12 @@ Step 3. You can use the toolchain to build image now.
 	  Upgrade the new firmware by web interface provide by device, 
 	  then you will get your specific image.
 
+Other possible steps:
+
+  *) You can add busybox apps by:
+
+          a) make -C userland/busybox-1.00/ menuconfig
+
+          b) make -C userland/busybox-1.00/ install
+
+          c) make  # there is no need to rebuild the entire directory structure
