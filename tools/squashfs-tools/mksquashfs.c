@@ -27,6 +27,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <sys/types.h>
+#include <sys/sysmacros.h>  /* `major` and `minor` macros were moved here */
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <errno.h>

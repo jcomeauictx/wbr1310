@@ -3,7 +3,7 @@ CXX = g++ -O2 -Wall
 CXX_C = gcc -O2 -Wall
 LIB = -lm
 RM = rm -f
-CFLAGS = -c -I ../../../
+CFLAGS = -c -I ../../../ -fpermissive
 
 OBJS = \
   LzmaAlone.o \

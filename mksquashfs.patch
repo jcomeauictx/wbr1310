@@ -1,0 +1,11 @@
+diff -up tools/squashfs-tools/mksquashfs.c.orig tools/squashfs-tools/mksquashfs.c
+--- tools/squashfs-tools/mksquashfs.c.orig	2019-01-11 20:57:22.591884222 -0800
++++ tools/squashfs-tools/mksquashfs.c	2019-01-11 20:56:05.003459335 -0800
+@@ -27,6 +27,7 @@
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>  /* `major` and `minor` macros were moved here */
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <errno.h>

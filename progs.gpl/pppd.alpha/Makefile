@@ -118,10 +118,11 @@ CFLAGS   += -DHAS_SHADOW
 #LIBS     += -lshadow $(LIBS)
 endif
 
-ifneq ($(wildcard /usr/include/crypt.h),)
+# we shouldn't be checking /usr for anything, we have our own local toolchain
+ifneq ($(shell find ../.. -name crypt.h),)
 CFLAGS   += -DHAVE_CRYPT_H=1
 endif
-ifneq ($(wildcard /usr/lib/libcrypt.*),)
+ifneq ($(shell find ../.. -name libcrypt.*),)
 LIBS	+= -lcrypt
 endif
 

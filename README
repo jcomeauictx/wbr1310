@@ -103,6 +103,12 @@ Step 3. You can use the toolchain to build image now.
   8) $cd .. (pwd is /home/john/wbr1310)
 
   9) $make
+          a) if you have an error in pppd:
+             `patch -p0 pppd.patch` then again try `make`
+          b) if you have a problem in mksquashfs:
+             `patch -p0 mksquashfs.patch` then again try `make`
+          c) if you have a problem building LZMA tools:
+             `patch -p0 lzma.patch` then again try `make`
 
   10) After make successfully, you will find the image file in ./images/.
 

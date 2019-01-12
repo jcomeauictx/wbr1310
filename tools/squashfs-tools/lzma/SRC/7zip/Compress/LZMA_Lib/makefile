@@ -2,7 +2,7 @@ PROG = liblzma.a
 CXX = g++ -O3 -Wall
 AR = ar
 RM = rm -f
-CFLAGS = -c -I../../..
+CFLAGS = -c -I../../.. -fpermissive
 
 OBJS = \
   ZLib.o \
