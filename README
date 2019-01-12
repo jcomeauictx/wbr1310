@@ -71,7 +71,7 @@ Step 2. Building the toolchain
 
   7) $patch -p0 < c-parse.y.patch
 
-  8) $make -C buildroot
+  8) $make -C buildroot  # you can skip this step, as step 9 does it also
 
   9) $./build_tool_chain.sh
 
