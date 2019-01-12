@@ -113,8 +113,15 @@ Other possible steps:
 
   *) You can add busybox apps by:
 
-          a) make -C userland/busybox-1.00/ menuconfig
+          a) $make -C userland/busybox-1.00/ menuconfig
 
-          b) make -C userland/busybox-1.00/ install
+          b) $make -C userland/busybox-1.00/ install
 
-          c) make  # there is no need to rebuild the entire directory structure
+          c) $make  # there is no need to rebuild the entire codebase
+
+          *) You can then integrate your changes from 
+             userland/busybox-1.00/.config to
+             boards/wrgg19/busybox-1.00.config, being careful not to
+             overwrite the placeholders @@CROSS_COMPILER@@ and @@TARGET@@
+             if you want to merge your changes to github. This will ensure
+             your apps are created on each new build.
