@@ -10,9 +10,10 @@ fi
 if [ ! -e buildroot/.config.cmd ]; then
 	make -C buildroot oldconfig
 fi
-exit
+if [ ! -e setupenv ]; then
 	echo -e "\033[32mStart to build the tool chain !\033[0m"
 	make -C buildroot
+fi
 
 TOPDIR=`pwd`
 ENV_VAR=setupenv
