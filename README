@@ -3,7 +3,7 @@ o This file contains steps for building toolchain and building the image.
 
 Step 1. Install fedora linux 12 (choose Software Development) on 32bit CPU.
  -OR-
-        On Debian, `sudo apt-get install bison flex gettext`
+        On Debian, `sudo apt-get install bison flex gettext ncurses-dev`
 
 Step 2. Building the toolchain
 
