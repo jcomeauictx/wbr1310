@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 if [ ! -d buildroot ]; then
 	tar zxvf buildroot.tgz
