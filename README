@@ -85,9 +85,9 @@ Step 3. You can use the toolchain to build image now.
 
   2) $make
 
-  3) $cp kernel/wrgg19.config kernel/.config
+  3) $cd kernel
 
-  4) $cd kernel
+  4) $cp wrgg19.config .config
   
   5) $make menuconfig
 	
