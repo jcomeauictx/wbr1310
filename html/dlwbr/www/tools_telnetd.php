@@ -11,7 +11,7 @@ if ($ACTION_POST!="")
 }
 
 /* --------------------------------------------------------------------------- */
-require("/www/model/__html_head.php");
+require("/www/model/__html_head.php");?>
 <body <?=$G_BODY_ATTR?>>
 <form name="frm" id="frm" method="post" action="<?=$MY_NAME?>.php">
 <input type="hidden" name="ACTION_POST" value="SOMETHING">
@@ -33,6 +33,7 @@ require("/www/model/__html_head.php");
 		<div class="box">
 			<h2><?=$m_title_telnetd?></h2>
 			<table width="525">
+			<tbody>
 			<tr>
 				<td>
 					<input name="set" id="set" type=button class=button_submit value="<?=$m_reset_telnetd?>">
