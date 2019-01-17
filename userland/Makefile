@@ -11,8 +11,15 @@
 Q ?= @
 APPS := scripts board
 TARGET_DIRS := bin dev etc home lib mnt proc usr var
+BB_CONFIG_TEMPLATE := board/busybox-1.00.config
+BB_PREFIX := $(shell sed -n 's/^PREFIX=\(.*\)/\1/p' $(BB_CONFIG_TEMPLATE))
+BB_CROSS_COMPILER_PREFIX := $(shell sed -n 's/^CROSS_COMPILER_PREFIX=\(.*\)/\1/p' $(BB_CONFIG_TEMPLATE))
+TIMESTAMP ?= $(shell date +%Y%m%d%H%M%S).userland
 
 all:	app target
+
+env:
+	env
 
 app: bb
 	@echo -e "\033[32mBuilding application programs...\033[0m"
@@ -62,6 +69,11 @@ bb_setup:
 	@echo -e "\033[32mSetup busybox v1.00 configuration ...\033[0m"
 	$(Q)sed -e 's|@@CROSS_COMPILER@@|$(TPATH_UC)/bin/$(CROSS_COMPILE)|' board/busybox-1.00.config > tmpconfig
 	$(Q)sed -e 's|@@TARGET@@|../target|' tmpconfig > busybox-1.00/.config
+
+bb_updatedefaults: board/busybox-1.00.config busybox-1.00/.config
+	# reverse of bb_setup, only do this after testing resulting image
+	cp $< $<.$(TIMESTAMP)
+	sed -e 's/^\(CROSS_COMPILER_PREFIX=\).*/\1$(BB_CROSS_COMPILER_PREFIX)/' -e 's/^\(PREFIX=\).*/\1$(BB_PREFIX)/' $(word 2, $+) > $<
 
 bb:
 	@echo -e "\033[32mBuilding busybox v1.00 ...\033[0m"

@@ -54,6 +54,7 @@ else
 GENDEF		:= $(ENV_HTML)/gendef.sh
 endif
 endif
+TIMESTAMP	?= $(shell date +%Y%m%d%H%M%S)
 
 #########################################################################
 
@@ -359,4 +360,6 @@ clean: user_clean progs_clean
 
 distclean: clean env_clean config_clean cvslogout
 
+env:
+	env
 .PHONY: conf menuconfig config oldconfig config_clean clean distclean
