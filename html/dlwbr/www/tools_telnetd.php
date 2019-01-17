@@ -7,11 +7,18 @@ $CATEGORY		="tools";
 if ($ACTION_POST!="")
 {
 	require("/www/model/__admin_check.php");
-	exec("/etc/scripts/misc/telnetd.sh");
 }
 
 /* --------------------------------------------------------------------------- */
 require("/www/model/__html_head.php");?>
+<script>
+function do_telnetd()
+{
+	var str="/sys_cfg_valid.xgi?";
+	str+=exe_str("submit TELNETD");
+	self.location.href=str;
+}
+</script>
 <body <?=$G_BODY_ATTR?>>
 <form name="frm" id="frm" method="post" action="<?=$MY_NAME?>.php">
 <input type="hidden" name="ACTION_POST" value="SOMETHING">
@@ -36,7 +43,7 @@ require("/www/model/__html_head.php");?>
 			<tbody>
 			<tr>
 				<td>
-					<input name="set" id="set" type=button class=button_submit value="<?=$m_reset_telnetd?>">
+					<input name="set" id="set" type=button class=button_submit value="<?=$m_reset_telnetd?>" onclick="do_telnetd()">
 				</td>
 			</tr>
 			</tbody>

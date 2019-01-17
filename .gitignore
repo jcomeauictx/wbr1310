@@ -1,5 +1,5 @@
 tools
-progs.gpl
 kernels
 *.o
 *.a
+*.so
